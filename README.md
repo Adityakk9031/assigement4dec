@@ -18,6 +18,8 @@ Below are the screenshots for quick reference. You can copy these markdown image
 
 ![Screenshot 5](https://github.com/Adityakk9031/assigement4dec/blob/eaed44a733dbecec5d304acb69459db2035342e3/Screenshot_5-12-2025_17651_localhost.jpeg)
 
+![Screenshot 6](https://github.com/Adityakk9031/assigement4dec/blob/1d58c4305e486742a3a22998319a7cc61664eb89/Screenshot_5-12-2025_17624_localhost.jpeg)
+
 ---
 
 ## 🚀 Quick Start Guide
