@@ -1,106 +1,113 @@
-# Task Management App - Full Stack
+# Task Management App — Full Stack
 
 A full-stack task management application with JWT authentication, built with React (Vite) frontend and Node.js/Express backend using Prisma ORM with PostgreSQL.
+
+---
+
+## Screenshots
+
+Below are the screenshots for quick reference. You can copy these markdown image links directly into other files if needed.
+
+![Screenshot 1](https://github.com/Adityakk9031/assigement4dec/blob/eaed44a733dbecec5d304acb69459db2035342e3/Screenshot_5-12-2025_17540_localhost.jpeg)
+
+![Screenshot 2](https://github.com/Adityakk9031/assigement4dec/blob/eaed44a733dbecec5d304acb69459db2035342e3/Screenshot_5-12-2025_17552_localhost.jpeg)
+
+![Screenshot 3](https://github.com/Adityakk9031/assigement4dec/blob/eaed44a733dbecec5d304acb69459db2035342e3/Screenshot_5-12-2025_17613_localhost.jpeg)
+
+![Screenshot 4](https://github.com/Adityakk9031/assigement4dec/blob/eaed44a733dbecec5d304acb69459db2035342e3/Screenshot_5-12-2025_17637_localhost.jpeg)
+
+![Screenshot 5](https://github.com/Adityakk9031/assigement4dec/blob/eaed44a733dbecec5d304acb69459db2035342e3/Screenshot_5-12-2025_17651_localhost.jpeg)
+
+---
 
 ## 🚀 Quick Start Guide
 
 ### Prerequisites
 
-- **Node.js** (v18 or higher)
-- **PostgreSQL** database (local or cloud)
-- **npm** or **yarn**
+* **Node.js** (v18 or higher)
+* **PostgreSQL** database (local or cloud)
+* **npm** or **yarn**
 
 ### Step 1: Set Up PostgreSQL Database
 
 You need a PostgreSQL database. Choose one option:
 
-#### Option A: Local PostgreSQL
-1. Install PostgreSQL on your machine
-2. Create a database:
-   ```bash
-   createdb taskdb
-   # Or using psql:
-   psql -U postgres
-   CREATE DATABASE taskdb;
-   ```
-3. Your connection string will be: `postgresql://postgres:YOUR_PASSWORD@localhost:5432/taskdb`
+**Option A: Local PostgreSQL**
 
-#### Option B: Cloud PostgreSQL (Free Options)
-- **Supabase**: https://supabase.com (free tier available)
-  - Go to Project Settings → Database → Connection String
-  - Copy the "URI" connection string
-- **Railway**: https://railway.app (free tier available)
-  - Create a new PostgreSQL service
-  - Copy the connection string from the Variables tab
-- **Neon**: https://neon.tech (free tier available)
-  - Create a project and copy the connection string
+```bash
+createdb taskdb
+# Or using psql:
+psql -U postgres
+CREATE DATABASE taskdb;
+```
+
+Your connection string will be: `postgresql://postgres:YOUR_PASSWORD@localhost:5432/taskdb`
+
+**Option B: Cloud PostgreSQL**
+
+* **Supabase**, **Railway**, or **Neon** — create a database and copy the connection URI.
 
 ### Step 2: Backend Setup
 
-1. **Navigate to backend folder:**
-   ```bash
-   cd backend
-   ```
+1. `cd backend`
+2. Copy the example environment file:
 
-2. **Create `.env` file:**
-   ```bash
-   # Copy the example file
-   cp .env.example .env
-   ```
+```bash
+cp .env.example .env
+```
 
-3. **Edit `.env` file** with your actual values:
-   ```env
-   DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE_NAME
-   JWT_SECRET=your_random_secret_key_here
-   PORT=4000
-   ```
-   
-   **Important:**
-   - Replace `DATABASE_URL` with your actual PostgreSQL connection string
-   - Replace `JWT_SECRET` with a random string (you can generate one with: `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`)
-   - `PORT` is optional (defaults to 4000)
+3. Edit `.env` with your values:
 
-4. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+```env
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE_NAME
+JWT_SECRET=your_random_secret_key_here
+PORT=4000
+```
 
-5. **Run database migrations:**
-   ```bash
-   npx prisma migrate dev --name init
-   ```
-   This will create the `User` and `Task` tables in your database.
+4. Install dependencies:
 
-6. **Start the backend server:**
-   ```bash
-   npm run dev
-   ```
-   The server will run on `http://localhost:4000`
+```bash
+npm install
+```
+
+5. Run Prisma migrations:
+
+```bash
+npx prisma migrate dev --name init
+```
+
+6. Start the backend server:
+
+```bash
+npm run dev
+```
+
+Server will run at `http://localhost:4000`
 
 ### Step 3: Frontend Setup
 
-1. **Open a new terminal and navigate to frontend folder:**
-   ```bash
-   cd frontend
-   ```
+1. `cd frontend`
+2. Install dependencies:
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-3. **Start the frontend development server:**
-   ```bash
-   npm run dev
-   ```
-   The app will open at `http://localhost:5173`
+3. Start the frontend dev server:
+
+```bash
+npm run dev
+```
+
+App will open at `http://localhost:5173`
 
 ### Step 4: Use the Application
 
-1. Open `http://localhost:5173` in your browser
-2. **Register** a new account (username + password)
-3. **Login** with your credentials
-4. Start creating and managing tasks!
+1. Open `http://localhost:5173`
+2. Register a new account
+3. Login and manage tasks
+
+---
 
 ## 📁 Project Structure
 
@@ -108,141 +115,125 @@ You need a PostgreSQL database. Choose one option:
 assigement4dec/
 ├── backend/
 │   ├── src/
-│   │   ├── app.ts              # Express app setup
-│   │   ├── index.ts            # Server entry point
-│   │   ├── prisma.ts           # Prisma client singleton
+│   │   ├── app.ts
+│   │   ├── index.ts
+│   │   ├── prisma.ts
 │   │   ├── middleware/
-│   │   │   └── auth.ts         # JWT authentication middleware
+│   │   │   └── auth.ts
 │   │   ├── routes/
-│   │   │   ├── auth.ts         # Auth routes (register/login)
-│   │   │   └── tasks.ts        # Task CRUD routes
+│   │   │   ├── auth.ts
+│   │   │   └── tasks.ts
 │   │   └── validation/
-│   │       ├── auth.ts         # Auth validation schemas (Zod)
-│   │       └── tasks.ts       # Task validation schemas (Zod)
+│   │       ├── auth.ts
+│   │       └── tasks.ts
 │   ├── prisma/
-│   │   └── schema.prisma       # Database schema
-│   ├── tests/                  # Jest + Supertest tests
-│   └── .env                    # Environment variables (create this)
+│   │   └── schema.prisma
+│   └── tests/
 ├── frontend/
 │   ├── src/
 │   │   ├── api/
-│   │   │   └── client.ts       # Axios instance with auth
+│   │   │   └── client.ts
 │   │   ├── components/
-│   │   │   └── ProtectedRoute.tsx
 │   │   ├── pages/
-│   │   │   ├── LoginPage.tsx
-│   │   │   ├── RegisterPage.tsx
-│   │   │   ├── TaskListPage.tsx
-│   │   │   └── TaskFormPage.tsx
 │   │   ├── store/
-│   │   │   ├── store.ts        # Redux store
-│   │   │   ├── authSlice.ts    # Auth state
-│   │   │   └── tasksSlice.ts   # Tasks state
-│   │   └── App.tsx             # Main app with routing
-│   └── .env                    # Frontend env (optional)
-└── README.md                   # This file
+│   │   └── App.tsx
+└── README.md
 ```
+
+---
 
 ## 🔧 Available Scripts
 
-### Backend (`backend/`)
+### Backend
 
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build TypeScript to JavaScript
-- `npm start` - Run the compiled server
-- `npm test` - Run Jest tests with coverage
-- `npx prisma studio` - Open Prisma Studio (database GUI)
+* `npm run dev` — start dev server
+* `npm run build` — build TypeScript
+* `npm start` — run compiled server
+* `npm test` — run tests
+* `npx prisma studio` — open Prisma Studio
 
-### Frontend (`frontend/`)
+### Frontend
 
-- `npm run dev` - Start Vite dev server
-- `npm run build` - Build for production
-- `npm run start` - Preview production build
-- `npm run lint` - Run ESLint
+* `npm run dev` — start Vite server
+* `npm run build` — production build
+* `npm run start` — preview
+* `npm run lint` — ESLint
+
+---
 
 ## 🔐 Environment Variables
 
-### Backend `.env` (Required)
+### Backend `.env`
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `DATABASE_URL` | PostgreSQL connection string | `postgresql://user:pass@localhost:5432/taskdb` |
-| `JWT_SECRET` | Secret for signing JWT tokens | `your_random_secret_here` |
-| `PORT` | Server port (optional) | `4000` |
+| Variable       | Description                   | Example                                        |
+| -------------- | ----------------------------- | ---------------------------------------------- |
+| `DATABASE_URL` | PostgreSQL connection string  | `postgresql://user:pass@localhost:5432/taskdb` |
+| `JWT_SECRET`   | Secret for signing JWT tokens | `your_random_secret_here`                      |
+| `PORT`         | Server port                   | `4000`                                         |
 
-### Frontend `.env` (Optional)
+### Frontend `.env` (optional)
 
-Currently, the frontend uses a hardcoded API URL (`http://localhost:4000/api`). If you need to change it, you can:
+```
+VITE_API_URL=http://localhost:4000/api
+```
 
-1. Create `frontend/.env`:
-   ```env
-   VITE_API_URL=http://localhost:4000/api
-   ```
-2. Update `frontend/src/api/client.ts` to use `import.meta.env.VITE_API_URL`
+---
 
 ## 📡 API Endpoints
 
 ### Authentication
 
-- **POST** `/api/auth/register`
-  - Body: `{ "username": string, "password": string }`
-  - Returns: `201 { user: { id, username }, token }`
+* **POST** `/api/auth/register` — `{ username, password }` → `201 { user, token }`
+* **POST** `/api/auth/login` — `{ username, password }` → `200 { user, token }`
 
-- **POST** `/api/auth/login`
-  - Body: `{ "username": string, "password": string }`
-  - Returns: `200 { user: { id, username }, token }`
+### Tasks (protected)
 
-### Tasks (Require `Authorization: Bearer <token>`)
+* **GET** `/api/tasks` — list tasks for user
+* **POST** `/api/tasks` — create task `{ title, description?, status? }`
+* **PUT** `/api/tasks/:id` — update task
+* **DELETE** `/api/tasks/:id` — delete task
 
-- **GET** `/api/tasks` - Get all tasks for logged-in user
-- **POST** `/api/tasks` - Create task
-  - Body: `{ "title": string, "description"?: string, "status"?: "pending" | "completed" }`
-- **PUT** `/api/tasks/:id` - Update task (only owner)
-  - Body: `{ "title"?: string, "description"?: string, "status"?: "pending" | "completed" }`
-- **DELETE** `/api/tasks/:id` - Delete task (only owner)
+---
+
+## 📝 Database Schema (brief)
+
+* **User**: `id`, `username` (unique), `password` (hashed), `createdAt`
+* **Task**: `id`, `title`, `description`, `status` (`pending` | `completed`), `userId`, `createdAt`, `updatedAt`
+
+---
+
+## 🐛 Troubleshooting
+
+* **Cannot find module '.prisma/client'**: run `npx prisma generate`
+* **Database connection error**: check `DATABASE_URL` and DB status
+* **Port already in use**: change `PORT` or kill the process
+* **Frontend can't connect**: ensure backend is running and `VITE_API_URL` is correct
+
+---
 
 ## 🧪 Testing
 
-### Backend Tests
+Backend tests use Jest + Supertest. To run:
 
 ```bash
 cd backend
 npm test
 ```
 
-Tests use Jest + Supertest and require a test database. Make sure your `DATABASE_URL` in `.env` points to a test database or the tests will use your main database.
+Make sure `DATABASE_URL` in your environment points to a test DB.
 
-## 🐛 Troubleshooting
-
-### "Cannot find module '.prisma/client'"
-Run: `npx prisma generate` in the `backend/` folder
-
-### "Database connection error"
-- Check your `DATABASE_URL` in `backend/.env`
-- Ensure PostgreSQL is running (if local)
-- Verify database credentials and network access (if cloud)
-
-### "Port already in use"
-Change `PORT` in `backend/.env` or kill the process using port 4000
-
-### Frontend can't connect to backend
-- Ensure backend is running on `http://localhost:4000`
-- Check browser console for CORS errors
-- Verify `frontend/src/api/client.ts` has correct `baseURL`
-
-## 📝 Database Schema
-
-- **User**: `id`, `username` (unique), `password` (hashed), `createdAt`
-- **Task**: `id`, `title`, `description` (optional), `status` (pending/completed), `userId`, `createdAt`, `updatedAt`
-
-## 🛠️ Tech Stack
-
-- **Frontend**: React 19, TypeScript, Vite, TailwindCSS, Redux Toolkit, React Router, React Hook Form, Zod, Axios
-- **Backend**: Node.js, Express, TypeScript, Prisma ORM, PostgreSQL, JWT, bcrypt, Zod
-- **Testing**: Jest, Supertest, React Testing Library (optional)
+---
 
 ## 📄 License
 
 ISC
 
+---
 
+## ✏️ Copy & Paste (full file)
+
+If you want to quickly copy the entire README, open this document and copy everything — it's already in markdown format and ready to paste into `README.md` in your repo.
+
+---
+
+If you want any edits (shorter, longer, add badges, or change the cover image), tell me which parts to update.
