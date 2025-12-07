@@ -232,10 +232,3 @@ ISC
 
 ---
 
-## ✏️ Copy & Paste (full file)
-
-If you want to quickly copy the entire README, open this document and copy everything — it's already in markdown format and ready to paste into `README.md` in your repo.
-
----
-
-If you want any edits (shorter, longer, add badges, or change the cover image), tell me which parts to update.
